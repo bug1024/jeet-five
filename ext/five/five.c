@@ -127,6 +127,10 @@ PHP_FUNCTION(is_five)
 
 PHP_MINIT_FUNCTION(five)
 {
+    zend_class_entry temp_php_five;
+    INIT_CLASS_ENTRY(temp_php_five, "Five", five_methods);
+
+    php_five = zend_register_internal_class(&temp_ce TSRMLS_CC);
     return SUCCESS;
 }
 
@@ -166,6 +170,20 @@ const zend_function_entry five_functions[] = {
     PHP_FE(five_binary, NULL)
     PHP_FE(is_five, NULL)
     PHP_FE(confirm_five_compiled, NULL)
+
+    PHP_FE_END
+};
+
+const zend_function_entry five_methods[] = {
+    PHP_ME(Five, english, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, chinese, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, chinese_pinyin, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, chinese_financial, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, chinese_japanese, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, chinese_korean, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, binary, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, is_five, NULL, ZEND_ACC_PUBLIC)
+
     PHP_FE_END
 };
 

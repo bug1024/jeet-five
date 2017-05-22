@@ -12,7 +12,7 @@
   | obtain it through the world-wide-web, please send a note to          |
   | license@php.net so we can mail you a copy immediately.               |
   +----------------------------------------------------------------------+
-  | Author:                                                              |
+  | Author: bug1024.com@gmail.com                                        |
   +----------------------------------------------------------------------+
 */
 
@@ -24,48 +24,37 @@
 extern zend_module_entry five_module_entry;
 #define phpext_five_ptr &five_module_entry
 
-#define PHP_FIVE_VERSION "0.1.0" /* Replace with version number for your extension */
+#define PHP_FIVE_VERSION "0.1.0"
 
 #ifdef PHP_WIN32
-#	define PHP_FIVE_API __declspec(dllexport)
+#   define PHP_FIVE_API __declspec(dllexport)
 #elif defined(__GNUC__) && __GNUC__ >= 4
-#	define PHP_FIVE_API __attribute__ ((visibility("default")))
+#   define PHP_FIVE_API __attribute__ ((visibility("default")))
 #else
-#	define PHP_FIVE_API
+#   define PHP_FIVE_API
 #endif
 
 #ifdef ZTS
 #include "TSRM.h"
 #endif
 
-/*
-  	Declare any global variables you may need between the BEGIN
-	and END macros here:
+zend_class_entry *php_five;
 
-ZEND_BEGIN_MODULE_GLOBALS(five)
-	zend_long  global_value;
-	char *global_string;
-ZEND_END_MODULE_GLOBALS(five)
-*/
+// code
+PHP_METHOD(Five, english);
+PHP_METHOD(Five, chinese);
+PHP_METHOD(Five, chinese_pinyin);
+PHP_METHOD(Five, chinese_financial);
+PHP_METHOD(Five, chinese_japanese);
+PHP_METHOD(Five, chinese_korean);
+PHP_METHOD(Five, binary);
+PHP_METHOD(Five, is_five);
 
-/* Always refer to the globals in your function as FIVE_G(variable).
-   You are encouraged to rename these macros something shorter, see
-   examples in any other php module directory.
-*/
 #define FIVE_G(v) ZEND_MODULE_GLOBALS_ACCESSOR(five, v)
 
 #if defined(ZTS) && defined(COMPILE_DL_FIVE)
 ZEND_TSRMLS_CACHE_EXTERN()
 #endif
 
-#endif	/* PHP_FIVE_H */
+#endif  /* PHP_FIVE_H */
 
-
-/*
- * Local variables:
- * tab-width: 4
- * c-basic-offset: 4
- * End:
- * vim600: noet sw=4 ts=4 fdm=marker
- * vim<600: noet sw=4 ts=4
- */
