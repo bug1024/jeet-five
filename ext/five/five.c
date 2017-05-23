@@ -53,6 +53,13 @@ PHP_FUNCTION(confirm_five_compiled)
 
 // five method begin
 
+PHP_METHOD(Five, number)
+{
+    zend_long num;
+    num = 5;
+    RETURN_LONG(num);
+}
+
 PHP_METHOD(Five, english)
 {
     zend_string *str;
@@ -152,6 +159,7 @@ PHP_MINFO_FUNCTION(five)
 }
 
 const zend_function_entry five_functions[] = {
+    PHP_ME(Five, number, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, english, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, chinese, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, chinese_pinyin, NULL, ZEND_ACC_PUBLIC)

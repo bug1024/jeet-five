@@ -41,6 +41,7 @@ extern zend_module_entry five_module_entry;
 zend_class_entry *php_five;
 
 // class method
+PHP_METHOD(Five, number);
 PHP_METHOD(Five, english);
 PHP_METHOD(Five, chinese);
 PHP_METHOD(Five, chinese_pinyin);
