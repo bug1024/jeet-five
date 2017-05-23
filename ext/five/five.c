@@ -51,65 +51,58 @@ PHP_FUNCTION(confirm_five_compiled)
 }
 
 
-// five function end
+// five method begin
 
-PHP_FUNCTION(five)
-{
-    zend_long five;
-    five = 5;
-    RETURN_LONG(five);
-}
-
-PHP_FUNCTION(five_english)
+PHP_METHOD(Five, english)
 {
     zend_string *str;
     str = strpprintf(0, "five");
     RETURN_STR(str);
 }
 
-PHP_FUNCTION(five_chinese)
+PHP_METHOD(Five, chinese)
 {
     zend_string *str;
     str = strpprintf(0, "五");
     RETURN_STR(str);
 }
 
-PHP_FUNCTION(five_chinese_pinyin)
+PHP_METHOD(Five, chinese_pinyin)
 {
     zend_string *str;
     str = strpprintf(0, "wǔ");
     RETURN_STR(str);
 }
 
-PHP_FUNCTION(five_chinese_financial)
+PHP_METHOD(Five, chinese_financial)
 {
     zend_string *str;
     str = strpprintf(0, "伍");
     RETURN_STR(str);
 }
 
-PHP_FUNCTION(five_japanese)
+PHP_METHOD(Five, japanese)
 {
     zend_string *str;
     str = strpprintf(0, "五");
     RETURN_STR(str);
 }
 
-PHP_FUNCTION(five_korean)
+PHP_METHOD(Five, korean)
 {
     zend_string *str;
     str = strpprintf(0, "오");
     RETURN_STR(str);
 }
 
-PHP_FUNCTION(five_binary)
+PHP_METHOD(Five, binary)
 {
     zend_long five;
     five = 101;
     RETURN_LONG(five);
 }
 
-PHP_FUNCTION(is_five)
+PHP_METHOD(Five, is_five)
 {
     long number;
 
@@ -122,15 +115,14 @@ PHP_FUNCTION(is_five)
     RETURN_BOOL(is_five);
 }
 
-// five function end
-
+// five method end
 
 PHP_MINIT_FUNCTION(five)
 {
     zend_class_entry temp_php_five;
-    INIT_CLASS_ENTRY(temp_php_five, "Five", five_methods);
+    INIT_CLASS_ENTRY(temp_php_five, "Five", five_functions);
 
-    php_five = zend_register_internal_class(&temp_ce TSRMLS_CC);
+    php_five = zend_register_internal_class(&temp_php_five TSRMLS_CC);
     return SUCCESS;
 }
 
@@ -160,27 +152,12 @@ PHP_MINFO_FUNCTION(five)
 }
 
 const zend_function_entry five_functions[] = {
-    PHP_FE(five, NULL)
-    PHP_FE(five_english, NULL)
-    PHP_FE(five_chinese, NULL)
-    PHP_FE(five_chinese_pinyin, NULL)
-    PHP_FE(five_chinese_financial, NULL)
-    PHP_FE(five_japanese, NULL)
-    PHP_FE(five_korean, NULL)
-    PHP_FE(five_binary, NULL)
-    PHP_FE(is_five, NULL)
-    PHP_FE(confirm_five_compiled, NULL)
-
-    PHP_FE_END
-};
-
-const zend_function_entry five_methods[] = {
     PHP_ME(Five, english, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, chinese, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, chinese_pinyin, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, chinese_financial, NULL, ZEND_ACC_PUBLIC)
-    PHP_ME(Five, chinese_japanese, NULL, ZEND_ACC_PUBLIC)
-    PHP_ME(Five, chinese_korean, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, japanese, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, korean, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, binary, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, is_five, NULL, ZEND_ACC_PUBLIC)
 

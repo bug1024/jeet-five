@@ -40,15 +40,17 @@ extern zend_module_entry five_module_entry;
 
 zend_class_entry *php_five;
 
-// code
+// class method
 PHP_METHOD(Five, english);
 PHP_METHOD(Five, chinese);
 PHP_METHOD(Five, chinese_pinyin);
 PHP_METHOD(Five, chinese_financial);
-PHP_METHOD(Five, chinese_japanese);
-PHP_METHOD(Five, chinese_korean);
+PHP_METHOD(Five, japanese);
+PHP_METHOD(Five, korean);
 PHP_METHOD(Five, binary);
 PHP_METHOD(Five, is_five);
+
+const zend_function_entry five_functions[];
 
 #define FIVE_G(v) ZEND_MODULE_GLOBALS_ACCESSOR(five, v)
 
