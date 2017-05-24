@@ -70,22 +70,22 @@ PHP_METHOD(Five, english)
 PHP_METHOD(Five, chinese)
 {
     zend_string *str;
-    str = strpprintf(0, "五");
-    RETURN_STR(str);
-}
+    zend_string *arg;
 
-PHP_METHOD(Five, chinese_pinyin)
-{
-    zend_string *str;
-    str = strpprintf(0, "wǔ");
-    RETURN_STR(str);
-}
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s|", &arg) != SUCCESS) {
+        return;
+    }
 
-PHP_METHOD(Five, chinese_financial)
-{
-    zend_string *str;
-    str = strpprintf(0, "伍");
-    RETURN_STR(str);
+    if (zend_string_equals(arg, strpprintf(0, "pinyin"))) {
+        str = strpprintf(0, "wǔ");
+        RETURN_STR(str);
+    } else if (zend_string_equals(arg, strpprintf(0, "financial"))) {
+        str = strpprintf(0, "伍");
+        RETURN_STR(str);
+    } else {
+        str = strpprintf(0, "五");
+        RETURN_STR(str);
+    }
 }
 
 PHP_METHOD(Five, japanese)
@@ -162,8 +162,6 @@ const zend_function_entry five_functions[] = {
     PHP_ME(Five, number, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, english, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, chinese, NULL, ZEND_ACC_PUBLIC)
-    PHP_ME(Five, chinese_pinyin, NULL, ZEND_ACC_PUBLIC)
-    PHP_ME(Five, chinese_financial, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, japanese, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, korean, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, binary, NULL, ZEND_ACC_PUBLIC)

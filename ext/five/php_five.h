@@ -44,8 +44,6 @@ zend_class_entry *php_five;
 PHP_METHOD(Five, number);
 PHP_METHOD(Five, english);
 PHP_METHOD(Five, chinese);
-PHP_METHOD(Five, chinese_pinyin);
-PHP_METHOD(Five, chinese_financial);
 PHP_METHOD(Five, japanese);
 PHP_METHOD(Five, korean);
 PHP_METHOD(Five, binary);
