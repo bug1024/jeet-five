@@ -72,14 +72,14 @@ PHP_METHOD(Five, chinese)
     zend_string *str;
     zend_string *arg;
 
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s|", &arg) != SUCCESS) {
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|s", &arg) != SUCCESS) {
         return;
     }
 
-    if (zend_string_equals(arg, strpprintf(0, "pinyin"))) {
+    if (zend_string_equals_literal(arg, PHP_FIVE_PINYIN)) {
         str = strpprintf(0, "wǔ");
         RETURN_STR(str);
-    } else if (zend_string_equals(arg, strpprintf(0, "financial"))) {
+    } else if (zend_string_equals_literal(arg, PHP_FIVE_FINACIAL)) {
         str = strpprintf(0, "伍");
         RETURN_STR(str);
     } else {
@@ -171,6 +171,7 @@ const zend_function_entry five_functions[] = {
     PHP_ME(Five, chinese, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, japanese, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, korean, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, fern, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, binary, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, is_five, NULL, ZEND_ACC_PUBLIC)
 

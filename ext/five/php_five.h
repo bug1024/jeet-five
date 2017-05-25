@@ -26,6 +26,9 @@ extern zend_module_entry five_module_entry;
 
 #define PHP_FIVE_VERSION "0.1.0"
 
+#define PHP_FIVE_PINYIN "pinyin"
+#define PHP_FIVE_FINACIAL "financial"
+
 #ifdef PHP_WIN32
 #   define PHP_FIVE_API __declspec(dllexport)
 #elif defined(__GNUC__) && __GNUC__ >= 4
