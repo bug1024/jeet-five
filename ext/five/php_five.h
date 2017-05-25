@@ -46,6 +46,7 @@ PHP_METHOD(Five, english);
 PHP_METHOD(Five, chinese);
 PHP_METHOD(Five, japanese);
 PHP_METHOD(Five, korean);
+PHP_METHOD(Five, fern);
 PHP_METHOD(Five, binary);
 PHP_METHOD(Five, is_five);
 

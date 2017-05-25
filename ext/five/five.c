@@ -102,6 +102,13 @@ PHP_METHOD(Five, korean)
     RETURN_STR(str);
 }
 
+PHP_METHOD(Five, fern)
+{
+    zend_string *str;
+    str = strpprintf(0, "❤️");
+    RETURN_STR(str);
+}
+
 PHP_METHOD(Five, binary)
 {
     zend_long five;
