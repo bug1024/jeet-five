@@ -71,10 +71,16 @@ PHP_METHOD(Five, chinese)
 {
     zend_string *str;
     zend_string *arg;
-
+#ifndef FAST_ZPP
     if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|s", &arg) != SUCCESS) {
         return;
     }
+#else
+    ZEND_PARSE_PARAMETERS_START(1, 2)
+         Z_PARAM_OPTIONAL
+         Z_PARAM_STR
+    ZEND_PARSE_PARAMETERS_END()
+#endif
 
     if (zend_string_equals_literal(arg, PHP_FIVE_PINYIN)) {
         str = strpprintf(0, "wǔ");
