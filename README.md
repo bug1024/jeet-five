@@ -15,8 +15,8 @@ A PHP extension just like npm five
     $five = new Five();
     $five->english(); // five
     $five->chinese(); // 五
-    $five->chinese_pinyin(); // wǔ
-    $five->chinese_financial(); // 伍
+    $five->chinese("pinyin"); // wǔ
+    $five->chinese("financial"); // 伍
     $five->japanese(); // 五
     $five->korean(); // 오
     $five->fern(); // ❤️
