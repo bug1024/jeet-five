@@ -72,14 +72,14 @@ PHP_METHOD(Five, chinese)
     zend_string *str;
     zend_string *arg;
 #ifndef FAST_ZPP
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|s", &arg) != SUCCESS) {
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|s", &arg) == FAILURE) {
         return;
     }
 #else
-    ZEND_PARSE_PARAMETERS_START(1, 2)
+    ZEND_PARSE_PARAMETERS_START(0, 1)
          Z_PARAM_OPTIONAL
-         Z_PARAM_STR
-    ZEND_PARSE_PARAMETERS_END()
+         Z_PARAM_STR(arg)
+    ZEND_PARSE_PARAMETERS_END();
 #endif
 
     if (zend_string_equals_literal(arg, PHP_FIVE_PINYIN)) {
@@ -124,12 +124,17 @@ PHP_METHOD(Five, binary)
 
 PHP_METHOD(Five, is_five)
 {
-    long number;
-
-    /* accepting arguments */
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "l", &number) != SUCCESS) {
+    zend_long number;
+#ifndef FAST_ZPP
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "l", &number) == FAILURE) {
         return;
     }
+#else
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+         Z_PARAM_LONG(number)
+    ZEND_PARSE_PARAMETERS_END();
+#endif
+
     zend_bool is_five;
     is_five = number == 5;
     RETURN_BOOL(is_five);

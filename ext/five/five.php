@@ -1,21 +1,14 @@
 <?php
-$br = (php_sapi_name() == "cli")? "":"<br>";
 
-if(!extension_loaded('five')) {
-	dl('five.' . PHP_SHLIB_SUFFIX);
-}
-$module = 'five';
-$functions = get_extension_funcs($module);
-echo "Functions available in the test extension:$br\n";
-foreach($functions as $func) {
-    echo $func."$br\n";
-}
-echo "$br\n";
-$function = 'confirm_' . $module . '_compiled';
-if (extension_loaded($module)) {
-	$str = $function($module);
-} else {
-	$str = "Module $module is not compiled into PHP";
-}
-echo "$str\n";
-?>
+$five = new Five();
+echo $five->number(), "\n";
+echo $five->english(), "\n";
+echo $five->chinese(), "\n";
+echo $five->chinese("pinyin"), "\n";
+echo $five->chinese("financial"), "\n";
+echo $five->japanese(), "\n";
+echo $five->korean(), "\n";
+echo $five->fern(), "\n";
+echo $five->binary(), "\n";
+echo $five->is_five(5), "\n";
+echo $five->is_five(4), "\n";
