@@ -108,6 +108,20 @@ PHP_METHOD(Five, korean)
     RETURN_STR(str);
 }
 
+PHP_METHOD(Five, french)
+{
+    zend_string *str;
+    str = strpprintf(0, "cinq");
+    RETURN_STR(str);
+}
+
+PHP_METHOD(Five, german)
+{
+    zend_string *str;
+    str = strpprintf(0, "fünf");
+    RETURN_STR(str);
+}
+
 PHP_METHOD(Five, fern)
 {
     zend_string *str;
@@ -182,6 +196,8 @@ const zend_function_entry five_functions[] = {
     PHP_ME(Five, chinese, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, japanese, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, korean, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, french, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(Five, german, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, fern, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, binary, NULL, ZEND_ACC_PUBLIC)
     PHP_ME(Five, is_five, NULL, ZEND_ACC_PUBLIC)
